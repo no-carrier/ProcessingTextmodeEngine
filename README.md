@@ -26,6 +26,8 @@ I hope you enjoy it as much as I do! For more info, pics, and video, please
 visit http://www.no-carrier.com
 
 Don Miller / NO CARRIER
+
 May 2016
 
+And here's a little pic from a Textmode Lightsynth I'm working on:
 ![alt tag](http://www.no-carrier.com/img/lightSynth640_c.png)
