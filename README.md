@@ -3,7 +3,7 @@
 
 The Processing Textmode Engine renders output in [Processing](http://www.processing.org) to a full color text display,
 reminiscent of early computer or [BBS](https://en.wikipedia.org/wiki/Bulletin_board_system) graphics. I wrote it to use for realtime visual performance, but can be used to create movies, still images, or even games.
-It is free and open source.
+It is free and open source. :v:
 
 Creating a textmode engine is something I've wanted to do for a long time. I
 grew up using [DOS](https://en.wikipedia.org/wiki/MS-DOS) and hanging out on BBSes, so I love textmode and [ANSI art](https://www.google.com/search?tbm=isch&q=ansi+art&gws_rd=ssl). I
@@ -21,7 +21,7 @@ main screen. Brightness controls the glyphs and the average color of the pixel a
 controls the color of that glyph. The background is always black, like conventional
 ANSI art tools.
 
-I hope you enjoy using it as much as I do! For more info, pics, and video, please
+I hope you enjoy using it as much as I do! :pray: For more info, pics, and video, please
 visit: http://www.no-carrier.com
 
 Don Miller / NO CARRIER
@@ -29,6 +29,5 @@ Don Miller / NO CARRIER
 Click on the image below to be taken to Vimeo to check out the engine in action:
 [![Textmode Engine Demo Video](http://www.no-carrier.com/img/engineDemo.png)](https://vimeo.com/165805982)
 
-And here's a little pic from a Textmode Lightsynth I'm working on. See more pics
-like this at: http://www.no-carrier.com
+And here's a little pic from a Textmode Lightsynth I'm working on. More soon :smile:
 ![Textmode Lightsynth](http://www.no-carrier.com/img/lightSynth640_c.png)
