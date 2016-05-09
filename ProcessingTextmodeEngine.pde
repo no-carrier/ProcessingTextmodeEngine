@@ -1,43 +1,42 @@
-PFont font; // textMode font
-PGraphics b; // screen buffer
-PShape s;  // shape
-PImage img;
+PFont font;       // textmode font
+PGraphics b;      // screen buffer
+PImage img;       // used for face.png
 
-int segSize; // segment size that screen is divided by 
-int display = 1;
-float tick; // counter
+int segSize;      // segment size, see renderTextMode tab for (lots) more detail 
+int display = 1;  // choose which demo to display, starts with face image
+float tick;       // counter, used for sin calcuations for shape rotation
 
-boolean doDraw = true;
-boolean blockMode = false; 
-boolean fps = false;   
-boolean textMode = true; 
+boolean doDraw = true;      // draw or pause
+boolean blockMode = false;  // block mode or ASCII mode
+boolean fps = false;        // show FPS or not
+boolean textMode = true;    // show buffer (stretched to fit screen) or textmode
 
 void setup() {
-  size(1024, 768, P2D);
+  size(1024, 768, P2D);     // need to use P2D as renderer, as we use P3D for buffer
   img = loadImage("face.png");
-  noSmooth();
-  noCursor();
-  initTextmode(); // set up buffer, load font for textmode output
+  noSmooth();               // keep it blocky :)
+  noCursor();               // don't need this!
+  initTextmode();           // set up buffer, load font for textmode output
 }
 
 void draw() {
-  if (doDraw) {
+  if (doDraw) {    
     tick = tick + 0.01;
 
-    helloWorld(); // simple demo
+    helloWorld();           // let's show off the textmode engine, shall we?
 
     // render options 
-    if (textMode) { // choose how to render
+    if (textMode) {         // choose how to render:
       background(0);
-      renderTextMode(); // display textmode...
+      renderTextMode();     // display textmode...
     } else {
       background(0);
-      image(b, 0, 0, width, height);   // ...or display buffer (stretched to fit screen)
+      image(b, 0, 0, width, height);  // ...or display buffer (stretched to fit screen)
     }
-    if (fps) { // display FPS if toggled
-      fill(0); // draw a box to make FPS easier to read ;)
+    if (fps) {
+      fill(0); 
       rect(0, 0, 32, 16);
-      fill(255); // display FPS in upper left corner
+      fill(255);
       text(int(frameRate), 0, 0);
     }
   }
@@ -46,10 +45,12 @@ void draw() {
 void initTextmode() {
   segSize = 4;
   //  800x600 / segSize of 4 = 200x150 buffer --- 1024x768 / segSize of 4 = 256x192 buffer
-  b = createGraphics(width/segSize, height/segSize, P3D);
-  font = loadFont("Px437_IBM_BIOS-16.vlw");
-  textFont(font, 16); // size of font
-  textAlign(LEFT, TOP);
+  // see renderTextMode about this whole buffer and segment size thing
+  b = createGraphics(width/segSize, height/segSize, P3D);  // we need P3D for our shapes
+  // 16x16 IBM Bios font from: http://int10h.org/oldschool-pc-fonts/readme/
+  font = loadFont("Px437_IBM_BIOS-16.vlw"); 
+  textFont(font, 16);   // size of font
+  textAlign(LEFT, TOP); // helps line it all up
 }
 
 void helloWorld() {
@@ -72,7 +73,7 @@ void helloWorld() {
   b.endDraw();
 }
 
-void drawImage()
+void drawImage()  // draws and rotates a face image
 {
   b.translate(b.width/2, b.height/2);
   b.rotateY((tick*100)*TWO_PI/360);
@@ -80,7 +81,7 @@ void drawImage()
   b.image(img, 0, 0);
 }
 
-void drawBox() {
+void drawBox() {  // draws a wireframe cube with simple lighting
   b.lights();
   b.pushMatrix();
   b.translate(b.width/2, b.height/2, 0); 
@@ -93,7 +94,7 @@ void drawBox() {
   b.popMatrix();
 }
 
-void drawBoxFilled() {
+void drawBoxFilled() {  // draws a filled cube with a spotlight
   b.spotLight(0, 255, 0, b.width/2, b.height/2, 400, 0, 0, -1, PI/4, 2);
   b.pushMatrix();
   b.translate(b.width/2, b.height/2, 0); 
@@ -106,7 +107,7 @@ void drawBoxFilled() {
   b.popMatrix();
 }
 
-void drawSphere() {
+void drawSphere() {  // draws a filled sphere with a spotlight
   b.spotLight(255, 0, 0, b.width/2, b.height/2, 400, 0, 0, -1, PI/4, 2);
   b.pushMatrix();
   b.translate(b.width/2, b.height/2, 0);
@@ -133,7 +134,7 @@ void keyPressed() {
   if (key == 'p') { 
     doDraw = !doDraw;
   }
-  if (key == ' ') { 
+  if (key == ' ') { // this is the spacebar ;)
     display++;
     if (display > 4) {
       display = 1;
