@@ -1,5 +1,16 @@
-// math for comments below is based on a 1024x768px screen with segSize variable set to 4.
-// see initTextmode() method in other tab for more information.
+// math for comments below is based on a 1024x768px screen
+// with segSize variable set to 4, as you can see below in initTextmode()
+
+void initTextmode() {
+  segSize = 4;
+  //  800x600 / segSize of 4 = 200x150 buffer --- 1024x768 / segSize of 4 = 256x192 buffer
+  // see renderTextMode about this whole buffer and segment size thing
+  b = createGraphics(width/segSize, height/segSize, P3D);  // we need P3D for our shapes
+  // 16x16 IBM Bios font from: http://int10h.org/oldschool-pc-fonts/readme/
+  font = loadFont("Px437_IBM_BIOS-16.vlw"); 
+  textFont(font, 16);   // size of font
+  textAlign(LEFT, TOP); // helps line it all up
+}
 
 // the tl;dr for this whole damn tab is this:
 // we have a 256x192px off-screen buffer that we draw on
@@ -44,10 +55,10 @@ void renderTextMode() {
         {
           int cY = y + startY;           // cY and cX are our current x and y values, based on 
           int cX = x + startX;           // the loop we're currently in, offset by startY and startX,
-                                         // which keep track of which segment we're in.
+          // which keep track of which segment we're in.
 
           color c = b.pixels[cY*b.width+cX]; // here we get the color of each pixel drawn to buffer,
-                                             // from the pixels array we loaded previously.
+          // from the pixels array we loaded previously.
 
           float currentR = red(c);           // we take the current red value for our pixel
           allR = (allR + currentR);          // and add it to the total red value for our segment.
@@ -62,24 +73,24 @@ void renderTextMode() {
 
       // after the segment is analyzed, we divide by total number of pixels in a segment to get averages
       // for red, green, and blue
-      
+
       float sr = (allR / (segSize * segSize) );     // sr, sg, and sb hold the average amount of
       float sg = (allG / (segSize * segSize) );     // red, green, and blue in each 4x4px segment.
       float sb = (allB / (segSize * segSize) );     
-      
+
       fill(sr, sg, sb);                             // finally we assign a fill color for our glyph
-                                                    // based on the average RGB values calculated above.
+      // based on the average RGB values calculated above.
 
       float segb = (allBri / (segSize * segSize) ); // just like above, we get the average brightness
-                                                    // of each 4x4 pixel segment and average it.
-                                                    
+      // of each 4x4 pixel segment and average it.
+
       // we now have a fill color and brightness for our current 4x4px segment. next we have to use
       // the brightness value to assign a glyph to each 4x4px segment. since the color is already set
       // above, the code below will assign glyphs with more negative space to darker segments and 
       // less negative space to brighter segments. there is a block mode, with four characters (including
       // a space, which is 0 brightness) and ASCII mode which has ten characters (and also uses a space
       // for 0 brightness segments).
-      
+
       // its important to note that we are assigning a color and a glyph to be written to our
       // screen, NOT our off-screen buffer. our off-screen 256x192 buffer is what we draw on, but
       // our 1024x768 screen is what we end up writing all 3,072 colored glyphs to every frame.
@@ -94,8 +105,7 @@ void renderTextMode() {
         } else if (segb > 48) {
           text("░", startX * segSize, startY * segSize); // and if the brightness for our segment
         }                                                // is under 48, we don't assign a glyph.
-      } 
-        else {                                            // here is our ASCII mode,
+      } else {                                            // here is our ASCII mode,
         if (sb > 230) {                                   // where we do the same as above,
           text("#", startX * segSize, startY * segSize);  // but we more characters!
         } else if (segb > 207) {

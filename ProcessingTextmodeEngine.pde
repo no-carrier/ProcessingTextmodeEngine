@@ -42,17 +42,6 @@ void draw() {
   }
 }
 
-void initTextmode() {
-  segSize = 4;
-  //  800x600 / segSize of 4 = 200x150 buffer --- 1024x768 / segSize of 4 = 256x192 buffer
-  // see renderTextMode about this whole buffer and segment size thing
-  b = createGraphics(width/segSize, height/segSize, P3D);  // we need P3D for our shapes
-  // 16x16 IBM Bios font from: http://int10h.org/oldschool-pc-fonts/readme/
-  font = loadFont("Px437_IBM_BIOS-16.vlw"); 
-  textFont(font, 16);   // size of font
-  textAlign(LEFT, TOP); // helps line it all up
-}
-
 void helloWorld() {
   b.beginDraw();
   b.background(0);
