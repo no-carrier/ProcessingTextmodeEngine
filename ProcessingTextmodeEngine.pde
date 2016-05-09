@@ -1,3 +1,9 @@
+// Processing Textmode Engine
+// Version 0.1 (initial release)
+// by Don Miller / NO CARRIER
+// http://www.no-carrier.com
+// Have fun! :)
+
 PFont font;       // textmode font
 PGraphics b;      // screen buffer
 PImage img;       // used for face.png
