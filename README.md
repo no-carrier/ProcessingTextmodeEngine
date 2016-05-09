@@ -1,5 +1,6 @@
 # Processing Textmode Engine
 ## Version 0.1 (initial release)
+### May 9, 2016
 
 The Processing Textmode Engine renders output in Processing to a full color text display,
 reminiscent of early computer or BBS graphics. I wrote it to use for realtime
@@ -26,8 +27,6 @@ I hope you enjoy it as much as I do! For more info, pics, and video, please
 visit http://www.no-carrier.com
 
 Don Miller / NO CARRIER
-
-May 2016
 
 And here's a little pic from a Textmode Lightsynth I'm working on:
 ![alt tag](http://www.no-carrier.com/img/lightSynth640_c.png)
