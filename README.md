@@ -29,5 +29,5 @@ Don Miller / NO CARRIER
 Click on the image below to be taken to Vimeo to check out the engine in action:
 [![Textmode Engine Demo Video](http://www.no-carrier.com/img/engineDemo.png)](https://vimeo.com/165805982)
 
-And here's a little pic from a Textmode Lightsynth I'm working on. More soon :smile:
-![Textmode Lightsynth](http://www.no-carrier.com/img/lightSynth640_c.png)
+And here's a link to a video from a Textmode Lightsynth I'm working on. More soon :smile:
+![Textmode Lightsynth Video](http://www.no-carrier.com/img/lightsynthVid.png)](https://vimeo.com/165815175)
