@@ -96,7 +96,7 @@ void renderTextMode() {
       // our 1024x768 screen is what we end up writing all 3,072 colored glyphs to every frame.
 
       if (blockMode) {                                   // if we are using block mode:
-        if (sb > 204) {                                  // and the brightness is above 204
+        if (segb > 204) {                                  // and the brightness is above 204
           text("█", startX * segSize, startY * segSize); // we assign this character.
         } else if (segb > 152) {                         // if its above 152, we assign it
           text("▓", startX * segSize, startY * segSize); // this character. and so on...
@@ -106,7 +106,7 @@ void renderTextMode() {
           text("░", startX * segSize, startY * segSize); // and if the brightness for our segment
         }                                                // is under 48, we don't assign a glyph.
       } else {                                            // here is our ASCII mode,
-        if (sb > 230) {                                   // where we do the same as above,
+        if (segb > 230) {                                   // where we do the same as above,
           text("#", startX * segSize, startY * segSize);  // but we more characters!
         } else if (segb > 207) {
           text("&", startX * segSize, startY * segSize);
