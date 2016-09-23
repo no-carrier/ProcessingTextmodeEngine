@@ -18,7 +18,7 @@ boolean fps = false;        // show FPS or not
 boolean textMode = true;    // show buffer (stretched to fit screen) or textmode
 
 void setup() {
-  size(1024, 768, P2D);     // need to use P2D as renderer, as we use P3D for buffer
+  fullScreen(P2D);     // need to use P2D as renderer, as we use P3D for buffer
   img = loadImage("face.png");
   noSmooth();               // keep it blocky :)
   noCursor();               // don't need this!
